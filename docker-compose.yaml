@@ -5,10 +5,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    expose:
-      - 120
     ports:
-      - 22:22
+      - 120:120
   frontend:
     image: frontend
     build:

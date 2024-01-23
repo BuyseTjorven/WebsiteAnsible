@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function (event) {
     // *** Variables ***
-    const url = "http://127.0.0.1:120";
+    const url = "http://192.168.32.154:9005";
 
     // Elements
     const btn = document.getElementById("testbtn");

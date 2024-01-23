@@ -5,7 +5,8 @@ import ansible_runner
 import os
 
 app = Flask(__name__)
-CORS(app) # This will enable CORS for all routes
+CORS(app, origins="*") # This will enable CORS for all routes
+
 
 # Define routes and their corresponding functions
 # Run Ansible playbook asynchronously 
@@ -33,4 +34,4 @@ def hello():
 # You can add more routes and functions as needed
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=120, debug=True)
+    app.run(host='0.0.0.0', port=9005, debug=True)

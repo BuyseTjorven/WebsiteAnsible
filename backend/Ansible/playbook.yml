@@ -2,7 +2,6 @@
   collections:
     - arensb.truenas
   hosts: all
-  become: yes
   tasks:
     - name: Set the hostname
       arensb.truenas.hostname:

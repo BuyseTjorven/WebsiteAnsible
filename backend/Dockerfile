@@ -7,4 +7,5 @@ RUN pip install cffi
 RUN pip install -r requirements.txt
 RUN ansible-galaxy collection install arensb.truenas
 COPY . .
+
 CMD ["python", "main.py"]
