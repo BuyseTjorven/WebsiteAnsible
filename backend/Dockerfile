@@ -3,6 +3,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN apk update
 RUN apk add sshpass
+RUN apk add openssh
 RUN pip install cffi
 RUN pip install -r requirements.txt
 RUN ansible-galaxy collection install arensb.truenas
