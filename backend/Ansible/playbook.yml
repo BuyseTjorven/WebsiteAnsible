@@ -6,3 +6,14 @@
     - name: Set the hostname
       arensb.truenas.hostname:
         name: Ansibletest
+- name: Deploy Nextcloud on TrueNAS SCALE
+  hosts: all
+  tasks:
+    - name: Deploy Nextcloud
+      nextcloud:
+        host: "192.168.32.154"
+        api_key: "2-0qA3w8KZfw44DUl1dHwNR524y0pnMOvyRnQIydUBKYPTpY2WW9qW8cX94aTtpg6J"
+        data_volume_path: "/mnt/tank/nextcloud/data"
+        db_volume_path: "/mnt/tank/nextcloud/db"
+        db_backup_volume_path: "/mnt/tank/nextcloud/dbbackup"
+        extra_mount_path: "/mnt/tank/nextcloud/opt"
