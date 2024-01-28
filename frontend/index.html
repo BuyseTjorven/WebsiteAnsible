@@ -9,13 +9,23 @@
 <body>
     <div class="container">
         <h2 class="mt-5">Update Ansible Inventory</h2>
-        <form action="/submit" method="post">
+        <form method="post">
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
+
+        <!-- Progress Bar -->
+        <div id="progressBarContainer" style="display:none; margin-top: 20px;">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" id="progressBar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- Message Box -->
+        <div id="messageBox" class="alert" role="alert" style="display:none; margin-top: 20px;"></div>
     </div>
     <script src="script.js"></script>
 </body>

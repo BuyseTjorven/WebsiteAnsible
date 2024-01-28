@@ -4,6 +4,7 @@ from flask_cors import CORS
 from threading import Thread
 import ansible_runner
 import os
+from flask import jsonify
 
 app = Flask(__name__)
 CORS(app, origins="*") # This will enable CORS for all routes
@@ -22,7 +23,7 @@ def submit():
     inventory_path = os.path.join(base_dir, "Ansible", "inventory.ini")
     ansible_thread = Thread(target=run_ansible_playbook_async, args=(playbook_path, inventory_path, {}))
     ansible_thread.start()
-    return 'IP and Password updated successfully!'
+    return jsonify(message='IP and Password updated successfully!'), 200
 # Define routes and their corresponding functions
 # Run Ansible playbook asynchronously 
 def run_ansible_playbook_async(playbook_path, inventory_path, extra_vars):
