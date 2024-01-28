@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test voor joerie</title>
-    <script src="script.js"></script>
-    <style>
-        #output {
-            border: 1px solid black;
-            width: 300px;
-            max-width: 100%;
-            padding: 0.5rem;
-        }
-    </style>
+    <title>Ansible Inventory Updater</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <div name="output" id="output" cols="30" rows="10">Empty</div>
-    <button id="testbtn">Call backend</button>
+    <div class="container">
+        <h2 class="mt-5">Update Ansible Inventory</h2>
+        <form action="/submit" method="post">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
-
-
 </html>
