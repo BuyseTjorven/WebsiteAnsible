@@ -20,4 +20,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const data = await response.json();
         output.textContent = data.message;
     }
+
+
 });
+
+// *** Additional functionality for Wireguard client management ***
