@@ -23,7 +23,7 @@ def submit():
     inventory_path = os.path.join(base_dir, "Ansible", "inventory.ini")
     ansible_thread = Thread(target=run_ansible_playbook_async, args=(playbook_path, inventory_path, {}))
     ansible_thread.start()
-    return jsonify(message='IP and Password updated successfully!'), 200
+    return jsonify(message='TrueNAS configuratie gestart!'), 200
 # Define routes and their corresponding functions
 # Run Ansible playbook asynchronously 
 def run_ansible_playbook_async(playbook_path, inventory_path, extra_vars):

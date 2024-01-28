@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ansible Inventory Updater</title>
+    <title>Configureer TrueNAS</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h2 class="mt-5">Update Ansible Inventory</h2>
+        <h2 class="mt-5">Configureer TrueNAS</h2>
         <form method="post">
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label for="password">Wachtwoord:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Start</button>
         </form>
+
+        <!-- New buttons for WireGuard and NextCloud -->
+        <button type="button" id="wireguardButton" class="btn btn-secondary mt-2" disabled>Open WireGuard</button>
+        <button type="button" id="nextcloudButton" class="btn btn-secondary mt-2" disabled>Open NextCloud</button>
 
         <!-- Progress Bar -->
         <div id="progressBarContainer" style="display:none; margin-top: 20px;">
@@ -25,7 +29,7 @@
         </div>
 
         <!-- Message Box -->
-        <div id="messageBox" class="alert" role="alert" style="display:none; margin-top: 20px;"></div>
+        <div id="messageBox" style="display:none; margin-top: 20px;"></div>
     </div>
     <script src="script.js"></script>
 </body>

@@ -6,41 +6,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressBarContainer = document.getElementById('progressBarContainer');
     const messageBox = document.getElementById('messageBox');
 
+    const wireguardButton = document.getElementById('wireguardButton');
+    const nextcloudButton = document.getElementById('nextcloudButton');
+
+    wireguardButton.addEventListener('click', function() {
+        window.open('http://' + currentIP + ':30058', '_blank');
+    });
+
+    nextcloudButton.addEventListener('click', function() {
+        window.open('http://' + currentIP + ':9001', '_blank');
+    });
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const formData = new FormData(form);
 
-        // Display the progress bar
         progressBarContainer.style.display = 'block';
         updateProgressBar(0);
 
-        // Simulate a 3-minute progress update
         let progress = 0;
         const interval = setInterval(function() {
             progress += 1;
             updateProgressBar(progress);
             if (progress >= 100) {
                 clearInterval(interval);
+                wireguardButton.disabled = false;
+                nextcloudButton.disabled = false;
+                wireguardButton.classList.remove('btn-secondary');
+                wireguardButton.classList.add('btn-primary');
+                nextcloudButton.classList.remove('btn-secondary');
+                nextcloudButton.classList.add('btn-primary');
             }
-        }, 1800); // 1800ms * 100 = 3 minutes
+        }, 1200); // 2 minutes duration
 
         fetch(newAction, {
             method: 'POST',
             body: formData
         })
         .then(response => {
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                return response.json();
-            } else {
-                throw new Error('Received content is not JSON');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.json();
         })
         .then(data => {
-            showMessage('Form submitted successfully: ' + JSON.stringify(data), 'success');
+            showMessage(data.message);
         })
         .catch(error => {
-            showMessage('Error submitting form: ' + error.message, 'danger');
+            showMessage(error.message);
         });
     });
 
@@ -49,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.setAttribute('aria-valuenow', percent);
     }
 
-    function showMessage(message, type) {
-        messageBox.className = 'alert alert-' + type;
+    function showMessage(message) {
         messageBox.textContent = message;
         messageBox.style.display = 'block';
     }

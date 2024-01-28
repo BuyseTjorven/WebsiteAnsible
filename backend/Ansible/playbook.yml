@@ -22,7 +22,7 @@
   tasks:
     - name: Deploy WG Easy
       wireguard:
-        host: "192.168.32.154"
+        host: "{{ ansible_host }}"
         api_key: "2-0qA3w8KZfw44DUl1dHwNR524y0pnMOvyRnQIydUBKYPTpY2WW9qW8cX94aTtpg6J"
         release_name: "wgeasy-release"
         version: "1.0.0" # Replace with the actual version of WG Easy you wish to deploy
